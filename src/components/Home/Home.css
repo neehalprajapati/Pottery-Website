@@ -1,0 +1,166 @@
+.background-slider {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: background-image 1.2s ease-in-out;
+  animation: fadeInBackground 1.5s ease forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fade-in background */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.slider-overlay {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Common arrow styles */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #b5651d;
+  font-size: 3rem;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  transition: color 0.4s ease;
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+
+  0%,
+  100% {
+    transform: translateY(-50%) translateY(0);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+
+  50% {
+    transform: translateY(-50%) translateY(-6px);
+    filter: drop-shadow(0 0 6px rgba(181, 101, 29, 0.4));
+  }
+}
+
+.arrow:hover {
+  color: #7a3f00;
+  animation: pulseGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: translateY(-50%) scale(1);
+    filter: drop-shadow(0 0 6px rgba(181, 101, 29, 0.4));
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1.15);
+    filter: drop-shadow(0 0 12px rgba(181, 101, 29, 0.8));
+  }
+}
+
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px;
+}
+
+.slider-content {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  max-width: 800px;
+  opacity: 0;
+  animation: slideInBounce 1.2s ease-out forwards;
+  animation-fill-mode: forwards;
+  /* Ensures it stays visible */
+}
+
+@keyframes slideInBounce {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slider-title {
+  font-size: 3.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.slider-description {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.7;
+}
+
+.cta-button.order-now-btn {
+  background-color: #c6a278;
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  animation: bouncePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes bouncePulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.cta-button.order-now-btn:hover {
+  background-color: #b08965;
+  transform: scale(1.1);
+}

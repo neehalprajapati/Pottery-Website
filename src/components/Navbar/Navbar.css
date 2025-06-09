@@ -1,0 +1,105 @@
+.custom-navbar {
+  position: fixed;
+  /* Keeps it fixed on top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  /* Ensures it's above other elements */
+  background-color: var(--color-23);
+  padding: 0.8rem 1.5rem;
+  animation: slideDown 0.8s ease-out;
+  height: 70px;
+}
+
+
+.navbar-logo {
+  height: 60px;
+  /* Adjust size as needed */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Brand animation */
+.animate-brand {
+  font-size: 25px;
+  color: var(--color-44);
+  /* Light sandy cream for brand name */
+  animation: fadeInLeft 1s ease-in-out;
+}
+
+/* Nav link animations */
+.animate-links {
+  animation: fadeInRight 1s ease-in-out;
+}
+
+/* Nav links default style */
+.custom-navbar .nav-link {
+  color: var(--color-45);
+  /* Soft neutral base for links */
+  position: relative;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+/* Hover underline animation */
+.custom-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-45);
+  /* Warm accent underline */
+  transition: width 0.3s ease;
+  animation: fadeInLeft 2s ease-in;
+}
+
+.custom-navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+.custom-navbar .nav-link:hover {
+  color: var(--color-2);
+  /* Very light text on hover */
+}
+
+/* Slide down animation on load */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
