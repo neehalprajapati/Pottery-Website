@@ -1,71 +1,104 @@
+/* Mobile-First Navbar Styles */
 .custom-navbar {
   position: fixed;
-  /* Keeps it fixed on top */
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
-  /* Ensures it's above other elements */
+  z-index: 1000;
   background-color: var(--color-23);
-  padding: 0.8rem 1.5rem;
-  animation: slideDown 0.8s ease-out;
-  height: 70px;
+  padding: 0.5rem 1rem;
+  height: auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease-out;
 }
 
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
 .navbar-logo {
-  height: 60px;
-  /* Adjust size as needed */
+  height: 40px;
   width: auto;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* Brand animation */
 .animate-brand {
-  font-size: 25px;
+  font-size: 1.2rem;
   color: var(--color-44);
-  /* Light sandy cream for brand name */
-  animation: fadeInLeft 1s ease-in-out;
+  margin-left: 0.5rem;
+  animation: fadeInLeft 0.8s ease-in-out;
 }
 
-/* Nav link animations */
-.animate-links {
-  animation: fadeInRight 1s ease-in-out;
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-45);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
-/* Nav links default style */
+.navbar-collapse {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .custom-navbar .nav-link {
   color: var(--color-45);
-  /* Soft neutral base for links */
+  padding: 0.8rem 1rem;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   font-weight: 500;
+  text-align: center;
+  font-size: 1rem;
 }
 
-/* Hover underline animation */
 .custom-navbar .nav-link::after {
   content: '';
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -2px;
-  left: 0;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: var(--color-45);
-  /* Warm accent underline */
   transition: width 0.3s ease;
-  animation: fadeInLeft 2s ease-in;
 }
 
 .custom-navbar .nav-link:hover::after {
-  width: 100%;
+  width: 80%;
 }
 
 .custom-navbar .nav-link:hover {
   color: var(--color-2);
-  /* Very light text on hover */
 }
 
-/* Slide down animation on load */
+/* Animations */
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
@@ -78,10 +111,9 @@
   }
 }
 
-/* Fade in from left */
 @keyframes fadeInLeft {
   from {
-    transform: translateX(-30px);
+    transform: translateX(-20px);
     opacity: 0;
   }
 
@@ -91,15 +123,115 @@
   }
 }
 
-/* Fade in from right */
 @keyframes fadeInRight {
   from {
-    transform: translateX(30px);
+    transform: translateX(20px);
     opacity: 0;
   }
 
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+  .custom-navbar {
+    padding: 0.8rem 1.5rem;
+    height: 70px;
+  }
+
+  .navbar-logo {
+    height: 50px;
+  }
+
+  .animate-brand {
+    font-size: 1.5rem;
+  }
+
+  .navbar-collapse {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .custom-navbar .nav-link {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .custom-navbar .nav-link::after {
+    bottom: 2px;
+    left: 0;
+    transform: none;
+  }
+
+  .custom-navbar .nav-link:hover::after {
+    width: 100%;
+  }
+}
+
+/* Desktop Styles (992px and up) */
+@media (min-width: 992px) {
+  .navbar-logo {
+    height: 60px;
+  }
+
+  .animate-brand {
+    font-size: 1.8rem;
+  }
+
+  .custom-navbar .nav-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+/* Mobile Menu Toggle Styles */
+@media (max-width: 767.98px) {
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-collapse {
+    display: none;
+    background-color: var(--color-23);
+    padding: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-collapse.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  .custom-navbar,
+  .animate-brand,
+  .custom-navbar .nav-link,
+  .navbar-collapse {
+    animation: none !important;
+    transition: none !important;
   }
 }

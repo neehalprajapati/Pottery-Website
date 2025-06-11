@@ -9,8 +9,8 @@ const Contact = () => {
         <h2>Get in Touch</h2>
 
         <div className="contact-info">
-          <p><FaPhoneAlt className="icon" /> <strong>Phone:</strong> +91 98765 43210</p>
-          <p><FaEnvelope className="icon" /> <strong>Email:</strong> support@claypots.co.in</p>
+          <p><FaPhoneAlt className="icon" /> <strong>Phone:</strong> +91 9850981974</p>
+          <p><FaEnvelope className="icon" /> <strong>Email:</strong> sandeepprajapati@gmail.com</p>
         </div>
 
         <form className="contact-form">
